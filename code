@@ -1,0 +1,10 @@
+OPEN DATASET p_file FOR INPUT IN TEXT MODE ENCODING DEFAULT.
+  DO.
+    READ DATASET p_file INTO wa_account.
+    IF sy-subrc <> 0.
+      EXIT.
+    ELSE.
+      APPEND wa_account TO t_account.
+    ENDIF.                             " If sy-subrc <> 0.
+  ENDDO.                               " DO
+  CLOSE DATASET p_file.
